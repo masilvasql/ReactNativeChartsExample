@@ -6,6 +6,7 @@ import GraficoProgresso from './views/GraficoProgresso'
 import GraficoBarras from './views/GraficoBarras'
 import GraficoPizza from './views/GraficoPizza'
 import GraficoBarrasSobrepostas from './views/GraficoBarrasSobrepostas'
+import GraficoHs from './views/GraficoHs'
 
 
 const Rotas = ()=>(
@@ -17,6 +18,7 @@ const Rotas = ()=>(
             <Scene key ='graficoBarras' component ={GraficoBarras}/>
             <Scene key ='graficoPizza' component ={GraficoPizza}/>
             <Scene key ='graficoBarrasSobrepostas' component ={GraficoBarrasSobrepostas}/>
+            <Scene key ='graficoHs' component ={GraficoHs}/>
         </Stack>
     </Router>
 )
