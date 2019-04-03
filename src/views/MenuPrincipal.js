@@ -27,10 +27,6 @@ export default class MenuPrincipal extends Component {
             <Button title='Gráfico Barras Sobrepostas' onPress={() => Actions.graficoBarrasSobrepostas()} />
           </View>
 
-          <View style={{ marginTop: 15 }}>
-            <Button title='Gráfico hs' onPress={() => Actions.graficoHs()} />
-          </View>
-
 
 
           
