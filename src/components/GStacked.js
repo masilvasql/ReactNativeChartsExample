@@ -11,16 +11,15 @@ export default class StackedBarCharts extends React.PureComponent {
 
     componentesFlatList = ({ item }) => (
         <View style={estilo.flatList}>
-            <Card containerStyle={{ padding: 0, margin: 0 }}>
+            <Card containerStyle={{ padding: 0, margin: 0, borderRadius:15 }}>
                 <View style={estilo.viewProgReal}>
-                    <Text style={{ fontWeight: 'bold' }}>{item.month} </Text>
-                </View>
-                <View style={estilo.viewProgReal}>
-                    <Text>Real.</Text>
-                    <Text>{item.realizado}</Text>
+                    <Text>{item.descItem}</Text>
                     <Divider style={estilo.divider} />
                     <Text>Prog.</Text>
-                    <Text>{item.programado}</Text>
+                    <Text>{item.valorProgramado}</Text>
+                    <Divider style={estilo.divider} />
+                    <Text>Vendido</Text>
+                    <Text>{item.qtdeItem}</Text>
 
                 </View>
             </Card>
@@ -28,64 +27,65 @@ export default class StackedBarCharts extends React.PureComponent {
     )
 
     render() {
-        const colors = ['#54a0ff', '#2e86de']
-        const keys = ['programado', 'realizado']
+        const colors = ['#7efff5', '#17c0eb']
+        const keys = ['qtdeItem', 'valorProgramado']
         return (
 
-            <ScrollView>
-                <View style={{ flex: 1, backgroundColor: '#192a56' }}>
-                    <ScrollView horizontal>
-                        <View style={this.props.data.length < 6 ? { alignItems:'center'}: null}>
+            <ScrollView >
+                <View style={this.props.data.length <= 6 ? { alignItems: 'center', flex: 1, backgroundColor: '#1e272e' } : { flex: 1, backgroundColor: '#1e272e' }}>
+                    <ScrollView horizontal >
+                        <View style={this.props.data.length <= 6 ? { alignItems: 'center' } : null}>
                             <StackedBarChart
-                                style={{ 
-                                    height: 215, 
-                                    width: this.props.data.length > 6 && this.props.data.length < 7 
-                                        ? 
-                                            652 
-                                        : 
-                                            this.props.data.length > 4  && this.props.data.length < 7 
-                                        ? 
+                            
+                                style={{
+
+                                    height: 215,
+                                    width: this.props.data.length > 6 && this.props.data.length < 7
+                                        ?
+                                        652
+                                        :
+                                        this.props.data.length > 4 && this.props.data.length < 7
+                                            ?
                                             562
-                                        :
+                                            :
                                             this.props.data.length == 7
-                                        ?   
-                                            652
-                                        :
-                                            this.props.data.length > 7  && this.props.data.length < 9
-                                        ? 
-                                            742
-                                        :
-                                            this.props.data.length == 9
-                                        ?
-                                            840
-                                        :
-                                            this.props.data.length == 10
-                                        ?
-                                            930
-                                        :
-                                            this.props.data.length == 11
-                                        ?
-                                            1020
-                                        :
-                                            this.props.data.length == 12
-                                        ?
-                                            1120
-                                        : 
-                                            368 
-                                    }}
+                                                ?
+                                                652
+                                                :
+                                                this.props.data.length > 7 && this.props.data.length < 9
+                                                    ?
+                                                    742
+                                                    :
+                                                    this.props.data.length == 9
+                                                        ?
+                                                        840
+                                                        :
+                                                        this.props.data.length == 10
+                                                            ?
+                                                            930
+                                                            :
+                                                            this.props.data.length == 11
+                                                                ?
+                                                                1020
+                                                                :
+                                                                this.props.data.length == 12
+                                                                    ?
+                                                                    1120
+                                                                    :
+                                                                    368
+                                }}
                                 keys={(keys)}
                                 colors={colors}
                                 data={this.props.data}
-                                showGrid={false}
                                 contentInset={{ top: 30 }}
                             >
-                                <Grid />
+                                <Grid/>
                             </StackedBarChart>
                             <View>
                                 <View style={{ alignItems: 'center', backgroundColor: '#0abde3', borderRadius: 15, marginTop: 10 }}>
                                     <Text style={estilo.txtLegenda}>LEGENDA</Text>
                                 </View>
-                                <View style={{ marginTop: 10 }}>
+                                <View style={{ marginTop: 10}}>
                                     <FlatList
                                         horizontal
                                         data={this.props.data}
@@ -106,9 +106,10 @@ export default class StackedBarCharts extends React.PureComponent {
 const estilo = StyleSheet.create({
     flatList: {
         width: 88,
-        borderRadius: 15,
+        borderRadius: 25,
         marginLeft: 5,
-        
+        marginBottom:10
+
 
     },
     viewFlatList: {
@@ -126,12 +127,12 @@ const estilo = StyleSheet.create({
     },
     viewProgReal: {
         alignItems: 'center',
-        justifyContent:'space-between'
+        justifyContent: 'space-between'
     },
     divider: {
-        paddingVertical: 2,
+        paddingVertical: 1.5,
         borderRadius: 10,
-        width: 105,
+        width: 78,
         backgroundColor: '#2c3e50'
     }
 })

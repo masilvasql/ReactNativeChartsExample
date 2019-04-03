@@ -33,6 +33,41 @@ export default class ListaProdutos extends Component {
                     descricao:'Uva',
                     valor:6.25,
                 },
+                {
+                    codigo:'6',
+                    descricao:'Vergamota',
+                    valor:1.99,
+                },
+                {
+                    codigo:'7',
+                    descricao:'Cereja',
+                    valor:9.99,
+                },
+                {
+                    codigo:'8',
+                    descricao:'Melancia',
+                    valor:20.25,
+                },
+                {
+                    codigo:'9',
+                    descricao:'Acerola',
+                    valor:10.75,
+                },
+                {
+                    codigo:'10',
+                    descricao:'Limão',
+                    valor:9.25,
+                },
+                {
+                    codigo:'11',
+                    descricao:'Mirtilo',
+                    valor:16.25,
+                },
+                {
+                    codigo:'12',
+                    descricao:'Amora',
+                    valor:12.25,
+                },
             ]
         }
     }

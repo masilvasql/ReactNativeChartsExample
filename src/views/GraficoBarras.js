@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Dimensions, ScrollView } from 'react-native'
 import GrBarras from '../components/GBarras'
+import { buscaPedido } from '../functions/sql'
 
 export default class GraficoBarras extends Component {
 
@@ -26,7 +27,8 @@ export default class GraficoBarras extends Component {
                     ]
                 }]
             },
-            orientation: ''
+            orientation: '',
+            labels:[]
         }
     }
 
@@ -36,6 +38,22 @@ export default class GraficoBarras extends Component {
         Dimensions.addEventListener('change', () => {
             this.getOrientation();
         });
+        this.buscaDados()
+    }
+
+    async buscaDados(){
+        let result = await buscaPedido()
+        console.log(result)
+        let arrayLabel = []
+        let cont =0
+        result.forEach(dados=>{
+            arrayLabel.push(dados.descItem)
+            cont ++;
+            if(cont == result.length){
+                this.setState({labels: arrayLabel})
+            }
+        })
+        
     }
 
     getOrientation = () => {
